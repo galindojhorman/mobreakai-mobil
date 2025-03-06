@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/login": (context) => const LoginScreen(),
         "/active-breaks-list": (context) => const ActiveBreaksListScreen(),
+        // Exponer las demás rutas aquí
       },
     );
   }

@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
-import '../widgets/base_screen.dart';
-import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/base_screen.dart';
+import '../utils/navigation.dart';
+import 'active_breaks.dart'; 
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     CustomButton(
                       text: "Iniciar sesión",
                       onPressed: () {
-                        Navigator.pushNamed(context, '/active-breaks-list');
+                        navigateWithAnimation(context, const ActiveBreaksListScreen());
                       },
                     ),
                     const SizedBox(height: 30),
