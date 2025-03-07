@@ -90,7 +90,7 @@ class ActiveBreaksListScreen extends StatelessWidget {
             // Botón de remover pausas activas
             TextButton.icon(
               onPressed: () {
-                // Acción para eliminar pausas
+                _showConfirmationDialog(context);
               },
               icon: const Icon(Icons.delete, color: Colors.red),
               label: const Text(
@@ -132,4 +132,34 @@ class ActiveBreaksListScreen extends StatelessWidget {
               : const Icon(Icons.cancel, color: Colors.red), // No hecho
     );
   }
+}
+
+Future<void> _showConfirmationDialog(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: AppColors.dialog,
+        title: const Text(
+          '¿Estás seguro que deseas eliminar los registros?',
+          style: TextStyle(color: AppColors.main, fontSize: 24),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Cancelar'),
+            onPressed: () {
+              Navigator.of(context).pop(); 
+            },
+          ),
+          TextButton(
+            child: const Text('Aceptar'),
+            onPressed: () {
+              // TODO: Navegar a lista vacias              
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
