@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobreakai/screens/register.dart';
 import '../utils/colors.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/custom_button.dart';
@@ -83,7 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 30),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateWithAnimation(context, RegisterScreen());
+                      },
                       child: Text(
                         "Registrarse",
                         style: TextStyle(
