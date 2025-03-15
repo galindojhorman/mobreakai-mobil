@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobreakai/screens/register.dart';
 import 'screens/active_breaks.dart';
 import 'screens/create_break.dart';
 import 'screens/login.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         "/login": (context) => const LoginScreen(),
         "/active-breaks-list": (context) => const ActiveBreaksListScreen(),
         "/create-break": (context) => const ActiveBreaksConfigScreen(),
+        "/register": (context) => const RegisterScreen(),
         // Exponer las demás rutas aquí
       },
     );
