@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobreakai/utils/colors.dart';
+import '../utils/navigation.dart';
 import '../widgets/base_screen.dart';
 import '../widgets/custom_app_bar.dart';
+import 'active_breaks_void.dart';
 
 class ActiveBreaksListScreen extends StatelessWidget {
   const ActiveBreaksListScreen({super.key});
@@ -149,13 +151,13 @@ Future<void> _showConfirmationDialog(BuildContext context) async {
           TextButton(
             child: const Text('Cancelar'),
             onPressed: () {
-              Navigator.of(context).pop(); 
+              Navigator.of(context).pop();
             },
           ),
           TextButton(
             child: const Text('Aceptar'),
             onPressed: () {
-              // TODO: Navegar a lista vacias              
+              navigateWithAnimation(context, const ActiveBreaksVoidScreen());
             },
           ),
         ],
