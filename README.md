@@ -1,16 +1,86 @@
-# mobreakai
+# MoBreak AI (Mobile)
+Jhorman Andrés Galindo Polania
 
-A new Flutter project.
+Leiner Jose Barrios Medina
 
-## Getting Started
+## Instalación y configuración del entorno Flutter
 
-This project is a starting point for a Flutter application.
+### 1. Requisitos previos
+Antes de instalar Flutter, asegúrate de tener lo siguiente:
 
-A few resources to get you started if this is your first Flutter project:
+- **Sistema operativo:** Windows, macOS o Linux
+- **Git:** Instalado y configurado en el sistema
+- **Android Studio o Xcode:** Para emuladores y herramientas de desarrollo
+- **VS Code o cualquier IDE compatible con Flutter**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 2. Instalación de Flutter
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Windows
+1. Descarga el SDK de Flutter desde [aquí](https://docs.flutter.dev/get-started/install/windows).
+2. Extrae el contenido en `C:\flutter`.
+3. Agrega `C:\flutter\bin` a la variable de entorno `PATH`.
+
+#### macOS
+1. Ejecuta el siguiente comando en la terminal:
+   ```sh
+   brew install --cask flutter
+   ```
+2. Agrega Flutter a tu `PATH`:
+   ```sh
+   export PATH="$PATH:`pwd`/flutter/bin"
+   ```
+
+#### Linux
+1. Descarga el SDK de Flutter desde [aquí](https://docs.flutter.dev/get-started/install/linux).
+2. Extrae el contenido y mueve la carpeta a `/opt/flutter`.
+3. Agrega `/opt/flutter/bin` al `PATH`.
+   ```sh
+   export PATH="$PATH:/opt/flutter/bin"
+   ```
+
+### 3. Verificar instalación
+Ejecuta el siguiente comando para verificar que todo esté correctamente instalado:
+```sh
+flutter doctor
+```
+Si hay errores, sigue las recomendaciones que aparecen en la salida del comando.
+
+---
+
+## Clonar y ejecutar el proyecto
+
+### 1. Clonar el repositorio
+```sh
+git clone https://github.com/galindojhorman/mobreakai-mobil.git
+cd MoBreakAI
+```
+
+### 2. Instalar dependencias
+```sh
+flutter pub get
+```
+
+### 3. Configurar dispositivo o emulador
+- Para dispositivos físicos, activa la depuración USB y conéctalo a la PC.
+- Para emuladores, abre Android Studio y ejecuta un dispositivo virtual.
+
+### 4. Ejecutar el proyecto
+```sh
+flutter run
+```
+Si hay más de un dispositivo disponible, usa:
+```sh
+flutter devices
+flutter run -d <ID_DEL_DISPOSITIVO>
+```
+
+---
+
+## Generar APK
+Para generar un APK de producción, ejecuta:
+```sh
+flutter build apk
+```
+El archivo generado se encontrará en `build/app/outputs/flutter-apk/app-release.apk`.
+
+---
