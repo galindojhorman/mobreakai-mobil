@@ -27,22 +27,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
       obscureText: widget.isPassword ? !_isPasswordVisible : false,
       decoration: InputDecoration(
         labelText: widget.label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-        suffixIcon:
-            widget.isPassword
-                ? IconButton(
-                  icon: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _isPasswordVisible = !_isPasswordVisible;
-                    });
-                  },
-                )
-                : null,
+        hintText: widget.hint, // Agregar el hintText aquí
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                icon: Icon(
+                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
+              )
+            : null,
       ),
     );
   }
