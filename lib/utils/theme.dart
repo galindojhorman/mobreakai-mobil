@@ -13,5 +13,6 @@ ThemeData appTheme = ThemeData(
     onSurface: AppColors.alternate,
     onError: Colors.white,
   ),
+  fontFamily: 'Poppins',
   useMaterial3: true,
 );
