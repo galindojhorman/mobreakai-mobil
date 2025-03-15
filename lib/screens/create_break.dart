@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:mobreakai/utils/colors.dart';
+import '../utils/navigation.dart';
 import '../widgets/base_screen.dart';
 import '../widgets/custom_app_bar.dart';
+import 'active_breaks_void.dart';
+import 'create_break_2.dart';
 
-class ActiveBreaksConfigScreen extends StatefulWidget {
-  const ActiveBreaksConfigScreen({super.key});
+class ActiveBreaksConfigScreen1 extends StatefulWidget {
+  const ActiveBreaksConfigScreen1({super.key});
 
   @override
-  _ActiveBreaksConfigScreenState createState() =>
-      _ActiveBreaksConfigScreenState();
+  _ActiveBreaksConfigScreen1State createState() =>
+      _ActiveBreaksConfigScreen1State();
 }
 
-class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
-  Set<String> selectedDays = {}; // Set para almacenar los días seleccionados
+class _ActiveBreaksConfigScreen1State extends State<ActiveBreaksConfigScreen1> {
+  Set<String> selectedDays = {};
   TimeOfDay startTime = TimeOfDay(hour: 8, minute: 0);
   TimeOfDay endTime = TimeOfDay(hour: 8, minute: 0);
 
@@ -83,16 +86,14 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                     _buildOption(
                       icon: Icons.access_time,
                       text: "1. Horario de pausas",
-                      onTap: () {
-                        // Acción para el botón "Horario de pausas"
-                      },
+                      onTap: () {},
                       isSelected: true,
                     ),
                     _buildOption(
                       icon: Icons.list,
                       text: "2. Cantidad de pausas",
                       onTap: () {
-                        // Acción para el botón "Cantidad de pausas"
+                       navigateWithAnimation(context, const ActiveBreaksConfigScreen2());
                       },
                       isSelected: false,
                     ),
@@ -120,7 +121,10 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                   children: [
                     const Text(
                       "Días de la semana",
-                      style: TextStyle(fontSize: 15, color: AppColors.alternate),
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: AppColors.alternate,
+                      ),
                     ),
                     const SizedBox(height: 13),
                     Row(
@@ -138,7 +142,10 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                     const SizedBox(height: 28),
                     const Text(
                       "Hora de inicio",
-                      style: TextStyle(fontSize: 15, color: AppColors.alternate),
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: AppColors.alternate,
+                      ),
                     ),
                     TimePickerContainer(
                       time: startTime,
@@ -146,27 +153,37 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                     ),
                     const Text(
                       "Hora de fin",
-                      style: TextStyle(fontSize: 15, color: AppColors.alternate),
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: AppColors.alternate,
+                      ),
                     ),
                     TimePickerContainer(
                       time: endTime,
                       onTap: () => _selectTime(context, false),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 60),
                     CustomButtonRow(
                       text1: "Volver",
                       onPressed1: () {
-                        Navigator.pop(context);
+                        navigateWithAnimation(
+                          context,
+                          const ActiveBreaksVoidScreen(),
+                        );
                       },
                       text2: "Continuar",
                       onPressed2: () {
-                        // TODO:  Acción para el botón "Continuar"
+                       navigateWithAnimation(
+                          context,
+                          const ActiveBreaksConfigScreen2(),
+                        );
                       },
                     ),
                     const SizedBox(height: 20),
                   ],
                 ),
               ),
+              const SizedBox(height: 47),
             ],
           ),
         ),
@@ -206,7 +223,7 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
     return GestureDetector(
       onTap: () => _toggleDaySelection(day),
       child: Container(
-        width: 40,
+        width: 35,
         height: 47,
         decoration: BoxDecoration(
           color: isSelected ? AppColors.highlight : Colors.white,
@@ -274,10 +291,10 @@ class CustomButtonRow extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              minimumSize: Size(double.infinity, 50),
+              minimumSize: Size(double.infinity, 40),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
-                side: BorderSide(color: AppColors.main, width: 2),
+                side: BorderSide(color: AppColors.main, width: 1),
               ),
             ),
             onPressed: onPressed1,
@@ -292,7 +309,7 @@ class CustomButtonRow extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.main,
-              minimumSize: Size(double.infinity, 50),
+              minimumSize: Size(double.infinity, 40),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),
