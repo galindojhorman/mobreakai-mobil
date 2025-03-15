@@ -12,7 +12,6 @@ class ActiveBreaksConfigScreen extends StatefulWidget {
 }
 
 class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
-  int selectedIndex = 0; // Índice de la opción seleccionada
   Set<String> selectedDays = {}; // Set para almacenar los días seleccionados
   TimeOfDay startTime = TimeOfDay(hour: 8, minute: 0);
   TimeOfDay endTime = TimeOfDay(hour: 8, minute: 0);
@@ -81,8 +80,22 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildOption(0, Icons.access_time, "1. Horario de pausas"),
-                    _buildOption(1, Icons.list, "2. Cantidad de pausas"),
+                    _buildOption(
+                      icon: Icons.access_time,
+                      text: "1. Horario de pausas",
+                      onTap: () {
+                        // Acción para el botón "Horario de pausas"
+                      },
+                      isSelected: true,
+                    ),
+                    _buildOption(
+                      icon: Icons.list,
+                      text: "2. Cantidad de pausas",
+                      onTap: () {
+                        // Acción para el botón "Cantidad de pausas"
+                      },
+                      isSelected: false,
+                    ),
                   ],
                 ),
               ),
@@ -107,10 +120,7 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                   children: [
                     const Text(
                       "Días de la semana",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: AppColors.alternate,
-                      ),
+                      style: TextStyle(fontSize: 15, color: AppColors.alternate),
                     ),
                     const SizedBox(height: 13),
                     Row(
@@ -128,10 +138,7 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                     const SizedBox(height: 28),
                     const Text(
                       "Hora de inicio",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: AppColors.alternate,
-                      ),
+                      style: TextStyle(fontSize: 15, color: AppColors.alternate),
                     ),
                     TimePickerContainer(
                       time: startTime,
@@ -139,10 +146,7 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
                     ),
                     const Text(
                       "Hora de fin",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: AppColors.alternate,
-                      ),
+                      style: TextStyle(fontSize: 15, color: AppColors.alternate),
                     ),
                     TimePickerContainer(
                       time: endTime,
@@ -170,32 +174,27 @@ class _ActiveBreaksConfigScreenState extends State<ActiveBreaksConfigScreen> {
     );
   }
 
-  Widget _buildOption(int index, IconData icon, String text) {
-    bool isSelected = selectedIndex == index;
-
+  Widget _buildOption({
+    required IconData icon,
+    required String text,
+    required VoidCallback onTap,
+    required bool isSelected,
+  }) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Row(
+      onTap: onTap,
+      child: Column(
         children: [
-          Column(
-            children: [
-              Container(
-                width: 64,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: isSelected ? AppColors.highlight : Colors.transparent,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Center(child: Icon(icon, color: AppColors.main)),
-              ),
-              Text(text, style: TextStyle(fontSize: 12, color: AppColors.main)),
-            ],
+          Container(
+            width: 64,
+            height: 32,
+            decoration: BoxDecoration(
+              color: isSelected ? AppColors.highlight : Colors.transparent,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Center(child: Icon(icon, color: AppColors.main)),
           ),
+          Text(text, style: TextStyle(fontSize: 12, color: AppColors.main)),
         ],
       ),
     );
