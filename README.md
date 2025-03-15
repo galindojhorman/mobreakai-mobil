@@ -65,6 +65,7 @@ flutter pub get
 - Para emuladores, abre Android Studio y ejecuta un dispositivo virtual.
 
 ### 4. Ejecutar el proyecto
+Flutter Version: 3.29.0
 ```sh
 flutter run
 ```
