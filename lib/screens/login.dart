@@ -4,7 +4,8 @@ import '../widgets/custom_text_field.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/base_screen.dart';
 import '../utils/navigation.dart';
-import 'active_breaks.dart'; 
+import 'active_breaks_void.dart';
+import 'register.dart'; 
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -78,12 +79,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     CustomButton(
                       text: "Iniciar sesión",
                       onPressed: () {
-                        navigateWithAnimation(context, const ActiveBreaksListScreen());
+                        navigateWithAnimation(context, const ActiveBreaksVoidScreen());
                       },
                     ),
                     const SizedBox(height: 30),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateWithAnimation(context, const RegisterScreen());
+                      },
                       child: Text(
                         "Registrarse",
                         style: TextStyle(
